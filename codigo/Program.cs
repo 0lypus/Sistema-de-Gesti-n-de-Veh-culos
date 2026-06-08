@@ -73,23 +73,38 @@ class Program
                     foreach (var moto in motos)
                     {
                         Console.WriteLine($"Simulando para {moto.Marca} {moto.Modelo}");
+                        Console.WriteLine("\nAcelerando...");
                         moto.Acelerar();
-                        moto.MostrarInformacion();
+                        Console.WriteLine("\nAcelerando nuevamente...");
+                        moto.Acelerar();
+                        Console.WriteLine("La velocidad que va el vehiculo es: " + moto.Velocidad + " km/h");
+
+                        Console.WriteLine("\nFrenando...");
                         moto.Frenar();
-                        moto.MostrarInformacion();
+                        Console.WriteLine("La velocidad que va la moto ahora es: " + moto.Velocidad + " km/h");
+                        Console.WriteLine("\nFrenando...");
+                        moto.Frenar();
+                        Console.WriteLine("La simulación ha finalizado. Información final del vehículo:");
                     }
                 }
                 else if (tipo.ToLower() == "auto")
                 {
                     foreach (var auto in autos)
                     {
-                         Console.WriteLine("\nAcelerando...");
-                        auto.Acelerar();
                         Console.WriteLine($"Simulando para {auto.Marca} {auto.Modelo}");
-                        
+                        Console.WriteLine("\nAcelerando...");
+                        auto.Acelerar();
+                        Console.WriteLine("\nAcelerando nuevamente...");
+                        auto.Acelerar();
+                        Console.WriteLine("La velocidad que va el vehiculo es: " + auto.Velocidad + " km/h");
+
+                        Console.WriteLine("\nFrenando...");
+                        auto.Frenar();
+                        Console.WriteLine("La velocidad que va el auto ahora es: " + auto.Velocidad + " km/h");
                         Console.WriteLine("\nFrenando...");
                         auto.Frenar();
                         Console.WriteLine("La simulación ha finalizado. Información final del vehículo:");
+                        
                     
                     }
                 }
@@ -98,6 +113,7 @@ class Program
                     Console.WriteLine("Tipo de vehículo no válido.");
                 }
             }
+            
         }
     }
 }
