@@ -46,7 +46,7 @@ class Program
                 Console.WriteLine("Ingrese el modelo del vehículo:");
                 string modelo = Console.ReadLine();
 
-               else  if (tipo.ToLower()== "moto")
+                if (tipo.ToLower()== "moto")
                 {
                     motos.Add(new Moto(marca, modelo));
                     Console.WriteLine("Moto registrada exitosamente.");
@@ -55,6 +55,43 @@ class Program
                 {
                     autos.Add(new Auto(marca, modelo));
                     Console.WriteLine("Auto registrado exitosamente.");
+                }
+                else
+                {
+                    Console.WriteLine("Tipo de vehículo no válido.");
+                }
+            }
+            static void Simulacion()
+            {
+                Console.WriteLine("Simulación de Aceleración y Frenado");
+                Console.WriteLine("Seleccione el tipo de vehículo para simular: (moto/auto)");
+
+                string tipo = Console.ReadLine();
+
+                if (tipo.ToLower() == "moto")
+                {
+                    foreach (var moto in motos)
+                    {
+                        Console.WriteLine($"Simulando para {moto.Marca} {moto.Modelo}");
+                        moto.Acelerar();
+                        moto.MostrarInformacion();
+                        moto.Frenar();
+                        moto.MostrarInformacion();
+                    }
+                }
+                else if (tipo.ToLower() == "auto")
+                {
+                    foreach (var auto in autos)
+                    {
+                         Console.WriteLine("\nAcelerando...");
+                        auto.Acelerar();
+                        Console.WriteLine($"Simulando para {auto.Marca} {auto.Modelo}");
+                        
+                        Console.WriteLine("\nFrenando...");
+                        auto.Frenar();
+                        Console.WriteLine("La simulación ha finalizado. Información final del vehículo:");
+                    
+                    }
                 }
                 else
                 {
