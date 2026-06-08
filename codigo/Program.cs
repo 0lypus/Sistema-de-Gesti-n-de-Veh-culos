@@ -34,7 +34,7 @@ class Program
                     Console.WriteLine("Opción no válida, intente nuevamente.");
                     break;
             }
-           static void RegistrarVehiculo()
+            static void RegistrarVehiculo()
             {
                 Console.WriteLine("Seleccione el tipo de vehículo a registrar: (moto/auto)");
 
@@ -46,12 +46,12 @@ class Program
                 Console.WriteLine("Ingrese el modelo del vehículo:");
                 string modelo = Console.ReadLine();
 
-                if (tipo.ToLower()== "moto")
+                if (tipo.ToLower() == "moto")
                 {
                     motos.Add(new Moto(marca, modelo));
                     Console.WriteLine("Moto registrada exitosamente.");
                 }
-                else if (tipo.ToLower()== "auto")
+                else if (tipo.ToLower() == "auto")
                 {
                     autos.Add(new Auto(marca, modelo));
                     Console.WriteLine("Auto registrado exitosamente.");
@@ -75,16 +75,19 @@ class Program
                         Console.WriteLine($"Simulando para {moto.Marca} {moto.Modelo}");
                         Console.WriteLine("\nAcelerando...");
                         moto.Acelerar();
+                        Console.WriteLine("La velocidad que va el vehiculo es: " + moto.Velocidad + " km/h");
                         Console.WriteLine("\nAcelerando nuevamente...");
                         moto.Acelerar();
                         Console.WriteLine("La velocidad que va el vehiculo es: " + moto.Velocidad + " km/h");
+
 
                         Console.WriteLine("\nFrenando...");
                         moto.Frenar();
                         Console.WriteLine("La velocidad que va la moto ahora es: " + moto.Velocidad + " km/h");
                         Console.WriteLine("\nFrenando...");
                         moto.Frenar();
-                        Console.WriteLine("La simulación ha finalizado. Información final del vehículo:");
+                        Console.WriteLine("La simulación ha finalizado. La velocidad final de la moto es: " + moto.Velocidad + " km/h");
+                        moto.Velocidad = 0;
                     }
                 }
                 else if (tipo.ToLower() == "auto")
@@ -94,6 +97,7 @@ class Program
                         Console.WriteLine($"Simulando para {auto.Marca} {auto.Modelo}");
                         Console.WriteLine("\nAcelerando...");
                         auto.Acelerar();
+                        Console.WriteLine("La velocidad que va el vehiculo es: " + auto.Velocidad + " km/h");
                         Console.WriteLine("\nAcelerando nuevamente...");
                         auto.Acelerar();
                         Console.WriteLine("La velocidad que va el vehiculo es: " + auto.Velocidad + " km/h");
@@ -103,9 +107,11 @@ class Program
                         Console.WriteLine("La velocidad que va el auto ahora es: " + auto.Velocidad + " km/h");
                         Console.WriteLine("\nFrenando...");
                         auto.Frenar();
-                        Console.WriteLine("La simulación ha finalizado. Información final del vehículo:");
+                        Console.WriteLine("La simulación ha finalizado. La velocidad final del vehículo es: " + auto.Velocidad + " km/h");
+                        auto.Velocidad = 0;
                         
-                    
+
+
                     }
                 }
                 else
@@ -113,7 +119,33 @@ class Program
                     Console.WriteLine("Tipo de vehículo no válido.");
                 }
             }
-            
+            static void MostrarInformacion()
+            {
+                Console.WriteLine("¿De que vehiculo desea mostrar la información? (moto/auto)");
+                string tipo = Console.ReadLine();
+                if (tipo.ToLower() == "moto")
+                {
+                    foreach (var moto in motos)
+                    {
+                        Console.WriteLine("Información de la moto:");
+                        moto.MostrarInformacion();
+
+                    }
+                }
+                else if (tipo.ToLower() == "auto")
+                {
+                    foreach (var auto in autos)
+                    {
+                        Console.WriteLine("Información del auto:");
+                        auto.MostrarInformacion();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Tipo de vehículo no válido.");
+                }
+
+            }
         }
     }
 }
